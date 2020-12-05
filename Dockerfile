@@ -1,6 +1,7 @@
-# Pull base image 
-From tomcat:8-jre8 
-
-# Maintainer 
-MAINTAINER "valaxytech@gmail.com" 
-COPY ./webapp.war /usr/local/tomcat/webapps
+FROM centos:latest
+MAINTAINER sowbarnika
+RUN yum install -y httpd 
+RUN yum install -y unzip
+COPY target/hello.war /usr/local/tomcat/webapps/
+CMD ["/usr/sbin/httpd", "-D",  "FOREGROUND"]
+EXPOSE 80
